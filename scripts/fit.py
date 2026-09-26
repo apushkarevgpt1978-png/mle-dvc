@@ -13,6 +13,7 @@ def fit_model():
         params = yaml.safe_load(fd)
 
     data = pd.read_csv('data/initial_data.csv')
+    data = data.drop(columns=['id', 'begin_date', 'end_date'])
 
     cat_features = data.select_dtypes(include='object')
     potential_binary_features = cat_features.nunique() == 2
